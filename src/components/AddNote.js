@@ -9,14 +9,14 @@ const AddNote = (props) => {
     const [note,setNote] = useState({title: "",description: "",tag: ""})
 
     const handleClick = (e)=>{
-        e.preventDefault();//do not load page
+        e.preventDefault();
       addNote(note.title,note.description,note.tag);
-      setNote({title: "",description: "",tag: ""})//after submit all clear
+      setNote({title: "",description: "",tag: ""})
       props.showAlert("Added Successfully","success")
     }
 
     const onChange = (e)=>{
-      setNote({...note,[e.target.name]: e.target.value})//... it is sprade oprator , all properties is stay in note but also add or override and set name to its value.
+      setNote({...note,[e.target.name]: e.target.value})
     }
 
   return (

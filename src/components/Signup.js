@@ -5,13 +5,13 @@ const Signup = (props) => {
   
   const [credentials,setCredentials] = useState({name: "" ,email: "",password:"", cpassword: ""});
   const navigate = useNavigate();
+   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   const handleSubmit = async(e)=>{
       e.preventDefault();
-      //page only one time load not again reload
 
      const {name,email,password} = credentials;
-      const response = await fetch("http://localhost:3000/api/auth/createuser", {
+      const response = await fetch(`${API_BASE_URL}/api/auth/createuser`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -21,9 +21,9 @@ const Signup = (props) => {
         });
         const json = await response.json();
         if(json.success){
-          //save the auth token and redirect
+         
           localStorage.setItem('token',json.authtoken);
-          navigate('/');
+          navigate('/login');
           props.showAlert("Account Created Successfully","success");
         }
         else{

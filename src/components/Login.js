@@ -5,10 +5,11 @@ const Login = (props) => {
 
     const [credentials,setCredentials] = useState({email: "",password:""});
     const navigate = useNavigate();
+   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
     const handleSubmit = async(e)=>{
-        e.preventDefault();//page only one time load not again reload
-        const response = await fetch("http://localhost:3000/api/auth/login", {
+        e.preventDefault();
+        const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -18,7 +19,7 @@ const Login = (props) => {
           });
           const json = await response.json();
           if(json.success){
-            //save the auth token and redirect
+            
             localStorage.setItem('token',json.authtoken);
             props.showAlert("Logged In Successfully","success");
             navigate('/');

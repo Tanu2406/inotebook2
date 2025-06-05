@@ -1,4 +1,4 @@
-// const { type } = require('@testing-library/user-event/dist/type');
+
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const UserSchema = new Schema({
@@ -18,11 +18,7 @@ const UserSchema = new Schema({
     date:{
         type:String,
         default:Date.now
-    }/*
-    address:{
-        type:String,
-        default:"Amaravti"
-    } */
+    }
     
   });
   const User = mongoose.model('user',UserSchema);

@@ -20,27 +20,26 @@ const Notes = (props) => {
 
 console.log("Notes in component:", notes);
 
-  const ref = useRef(null);//give reference to one element 
+  const ref = useRef(null);
   const refClose = useRef(null);
  const [note,setNote] = useState({etitle: "",edescription: "",etag: "default"});
-   // const {addNote} = context;
 
   const updateNote = (currentNote) => {
-    ref.current.click();// ref give to modal thats why modal is show &// Opens the modal programmatically
-    setNote({id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag}); // Populates the form in the modal with the current note's data
+    ref.current.click();
+    setNote({id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag}); 
     
   }
 
   const handleClick = (e)=>{
-    e.preventDefault();// Prevents page reload
-    editNote(note.id,note.etitle,note.edescription,note.etag); // Updates the note in the backend
-    refClose.current.click();// Closes the modal programmatically
+    e.preventDefault();
+    editNote(note.id,note.etitle,note.edescription,note.etag); 
+    refClose.current.click();
     props.showAlert("Uploaded Successfully","success")
-  //addNote(note.etitle,note.edescription,note.etag);
+  
 }
 
-const onChange = (e)=>{//to type or fill text
-  setNote({...note,[e.target.name]: e.target.value})// Dynamically updates the note state
+const onChange = (e)=>{
+  setNote({...note,[e.target.name]: e.target.value})
 }
 
   return (
@@ -88,7 +87,7 @@ const onChange = (e)=>{//to type or fill text
                     name="etitle"
                     value={note.etitle}
                     aria-describedby="emailHelp"
-                    onChange={onChange}//The onChange function updates the state of the note object whenever the user types in the form.
+                    onChange={onChange}
                     minLength={5}
                     required
                   />
@@ -160,15 +159,12 @@ const onChange = (e)=>{//to type or fill text
       
     ))
   ) : (
-    <p>Loading notes...</p> // Optional: show a loading message while notes are being fetched
+    <p>Loading notes...</p> 
   )}
 </div>
 
     </>
   );
 }
-//Otherwise, map through the notes array and render a Noteitem component for each note.
-            //The updateNote function is passed down to Noteitem to handle editing.
-//Invisible Button:
-//A hidden button with d-none is used to trigger the Bootstrap modal. This button is clicked programmatically using ref.current.click() when the modal needs to be shown.
+
 export default Notes;

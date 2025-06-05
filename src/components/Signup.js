@@ -6,6 +6,7 @@ const Signup = (props) => {
   const [credentials,setCredentials] = useState({name: "" ,email: "",password:"", cpassword: ""});
   const navigate = useNavigate();
    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+   console.log(API_BASE_URL);
 
   const handleSubmit = async(e)=>{
       e.preventDefault();
@@ -19,6 +20,7 @@ const Signup = (props) => {
           },
           body: JSON.stringify({name,email,password})
         });
+
         const json = await response.json();
         if(json.success){
          
@@ -27,6 +29,7 @@ const Signup = (props) => {
           props.showAlert("Account Created Successfully","success");
         }
         else{
+          
           props.showAlert("Invalid Credential","danger");
         }
   }

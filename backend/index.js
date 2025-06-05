@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 var app = express();
 
 app.use(cors({
-    origin:  ['http://localhost:3000', 'https://inotebook-khaki.vercel.app'],
+    origin:  ['http://localhost:3000', 'https://inotebook2.vercel.app/'],
      methods: ['GET', 'POST', 'PUT', 'DELETE'], 
     credentials: true, 
 }));
